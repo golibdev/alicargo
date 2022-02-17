@@ -1,0 +1,8 @@
+.bg{
+  /* background: rgb(0, 172, 74); */
+  box-shadow: inset 1px 1px 80px rgb(0, 158, 69);
+}
+
+.bg:hover{
+  box-shadow: inset 0px 0px 80px rgb(0, 158, 72);
+}

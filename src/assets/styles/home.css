@@ -1,0 +1,50 @@
+/* home section */
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.main-side{
+  height: 100vh;
+}
+.main-content{
+  background-image: url(../images/back.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  filter: brightness(75%);
+  transition: all 0.9s ease-in;
+}
+.main-content:hover{
+  filter: brightness(95%);
+}
+.main-content-user{
+  background-image: url(../images/commercial-cargo-services.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  filter: brightness(75%);
+  transition: all 0.9s ease-in;
+}
+.main-content-user:hover{
+  filter: brightness(95%);
+}
+
+.useForm{
+  position: relative;
+  top: 10rem;
+}
+
+.addres{
+  position: relative;
+  top:10rem
+}
+
+
+.big-checkbox{
+  width: 22px;
+  height: 22px;
+  position: relative;
+  left:38px
+}

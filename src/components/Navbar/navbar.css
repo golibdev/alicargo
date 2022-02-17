@@ -1,0 +1,19 @@
+.back{
+  padding: 0px 15px;
+  color: #ffff;
+  font-weight: 8000;
+  margin-right: 4rem;
+  position: relative;
+  top:-5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left:1.6rem;
+  height: 45px;
+}
+
+.back span{
+  position: relative;
+  top:-2px;
+  left: 4px;
+}

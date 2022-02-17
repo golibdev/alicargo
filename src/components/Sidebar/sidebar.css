@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=Ubuntu&display=swap');
+/* Sidebar Styles */
+
+.sidebar {
+  z-index: 1000;
+  position:fixed;
+  left: 0;
+  height: 100vh;
+  width: 15%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #000;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.sidebar header {
+  /* background-color: rgb(0, 0, 0); */
+  font-size: 20px;
+  line-height: 52px;
+  text-align: center;
+  font-family: 'Kanit', sans-serif;
+  margin-top: 15px;
+}
+
+.sidebar header a {
+  color: #61DAFB;
+  display: block;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 32px;
+  font-family: 'Kanit', sans-serif;
+}
+
+.sidebar header a:hover {
+  color: rgba(255, 255, 255, 0.698);
+}
+
+.sidebar .nav{
+  height: 55vh;
+  position:relative;
+  width: 250px;
+  background:rgba(0, 0, 0, 0.055);
+  top:2rem;
+}
+
+.nav li {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar .nav a{
+  background: none;
+  color: #CFD8DC;
+  font-size: 18px;
+  /* padding: 16px 24px; */
+  /* width: 250px; */
+  display: block;
+  text-decoration: none;
+}
+
+.sidebar .nav a.disabled {
+  color: #CFD8DC;
+  pointer-events: none;
+  cursor: default;
+}
+
+.sidebar .nav a:hover{
+  background: rgba(0, 0, 0, 0.356);
+  color: #61DAFB;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+
+}
+
+.sidebar .nav a i{
+  margin-right: 16px;
+}
