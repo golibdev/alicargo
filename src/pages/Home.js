@@ -42,7 +42,6 @@ function Home() {
       navigate('/home');
     } catch (err) {
       toast.error(err.response.data.non_field_errors[0]);
-      console.log(err);
     }
   }
   return (

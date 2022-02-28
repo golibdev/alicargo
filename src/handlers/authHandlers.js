@@ -1,10 +1,14 @@
-import moment from "moment";
-
 export const isAuthenticated = () => {
-   const expireTime = localStorage.getItem('expire_time');
-   const dateNow = moment(Date.now()).format('DD.MM.YYYY HH:mm:ss');
+   const expireTime = localStorage.getItem('expire_time').slice(0,10).split('.');
+   const expireTimeDate = new Date(`${expireTime[2]}-${expireTime[1]}-${expireTime[0]}`);
+   const dateNow = new Date();
    const token = localStorage.getItem('token');
-   if(!token || (dateNow > expireTime)) return false;
+   if(token && (dateNow.getTime() < expireTimeDate.getTime())) {
+      return true
+   }
+   else {
+      return false
+   }
 }
 
 export const logout = (navigate) => {
