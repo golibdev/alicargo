@@ -3,10 +3,7 @@ export const isAuthenticated = () => {
    const expireTimeDate = new Date(`${expireTime[2]}-${expireTime[1]}-${expireTime[0]}`);
    const dateNow = new Date();
    const token = localStorage.getItem('token');
-   if(token && (dateNow.getTime() < expireTimeDate.getTime())) {
-      return true
-   }
-   else {
+   if(!token && !(dateNow.getTime() > expireTimeDate.getTime())) {
       return false
    }
 }

@@ -14,8 +14,6 @@ function MainApp() {
     }
     if(isAuthenticated() === false) {
       navigate('/');
-    } else {
-      navigate('/home');
     }
   }, [navigate, pathName, role]);
   return (
