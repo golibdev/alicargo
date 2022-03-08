@@ -4,9 +4,13 @@ export const isAuthenticated = () => {
    const expireTimeDate = new Date(`${sliceDate[2]}-${sliceDate[1]}-${sliceDate[0]}`);
    const dateNow = new Date();
    const token = localStorage.getItem('token');
-   if(!token && !(dateNow.getTime() > expireTimeDate.getTime())) {
-      return false
+   if (token && expireTimeDate > dateNow) {
+      return true;
+   } else if(token && expireTimeDate < dateNow) {
+      localStorage.removeItem('token');
+      localStorage.removeItem('expire_time');
    }
+   return false;
 }
 
 export const logout = (navigate) => {
