@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import newOrderApi from '../../api/newOrderApi';
 import { toast, ToastContainer } from 'react-toastify'
 import OrderList from './OrderList';
@@ -17,6 +17,9 @@ const NewOrder = () => {
   const [loading, setLoading] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
   const [pageCount, setPageCount] = useState(0)
+
+
+
 
   const handleEnter = (event) => {
     if (event.key.toLowerCase() === "enter") {
@@ -75,7 +78,7 @@ const NewOrder = () => {
       setClient('')
       setBarcode('')
       setWeight('')
-      setWarehouse('')
+      // setWarehouse('')
       toast.success("Muvaffaqiyatli qo'shildi!")
       fetchData()
     } catch (err) {}
@@ -102,6 +105,7 @@ const NewOrder = () => {
             onKeyDown={handleEnter}
             value={client}
             onChange={(e) => setClient(e.target.value)}
+            
           />
 
         </div>
@@ -129,11 +133,12 @@ const NewOrder = () => {
             placeholder="Og'irligi"
             value={weight}
             onChange={(e) => setWeight(e.target.value)}
+            onKeyDown={handleEnter}
           />
         </div>
         <div className='col-3 mb-3'>
           <label>Ombor</label>
-          <select className="form-select w-100 p-2" onChange={(e) => setWarehouse(e.target.value)}>
+          <select className="form-select w-100 p-2"  onKeyDown={handleEnter} onChange={(e) => setWarehouse(e.target.value)}>
             <option value="">Warehouse</option>
             {warehouses.map((item, index) => (
               <option key={index} value={item.id}>{item.name}</option>
@@ -141,7 +146,7 @@ const NewOrder = () => {
           </select>
         </div>
         <div className="col-1 mb-3">
-          <button className="btn btn-success mt-4">
+          <button className="btn btn-success mt-4" >
             <i className="bi bi-check-circle del p-2 "></i>
           </button>
         </div>
