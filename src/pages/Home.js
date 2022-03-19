@@ -35,7 +35,6 @@ function Home() {
 
     try {
       const res = await authApi.login(params);
-      console.log(res.data)
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('user', res.data.user.full_name)
       localStorage.setItem('role', res.data.user.role)
