@@ -134,14 +134,9 @@ const Recive = () => {
       <Navbar />
       <form className="row">
         <div className="col-4" >
-            <select className="form-select" value={warehouse} onChange={e => setWarehouse(e.target.value)}>
-              <option value=''>Omborxonani tanlang</option>
-              {warehouses.map((item, index) => (
-              <option key={index} value={item.id}>
-                  {item.name}
-              </option>
-              ))}
-            </select>
+          <select disabled className="form-select w-100 p-2"  onKeyDown={handleEnter} onChange={(e) => setWarehouse(e.target.value)}>
+            <option value={warehouses[0]?.id}>{warehouses[0]?.name}</option>
+          </select>
         </div>
         <div className="col-4">
             <button className="btn btn-info text-white fw-bold mt-0" onClick={handleClick}>

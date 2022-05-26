@@ -11,15 +11,12 @@ const NewOrder = () => {
   const [data, setData] = useState([])
   const [client, setClient] = useState('')
   const [barcode, setBarcode] = useState('')
-  const [weight, setWeight] = useState('')
-  const [warehouse, setWarehouse] = useState('')
+  const [weight, setWeight] = useState('1')
+  const [warehouse, setWarehouse] = useState('2')
   const [warehouses, setWarehouses] = useState([])
   const [loading, setLoading] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
   const [pageCount, setPageCount] = useState(0)
-
-
-
 
   const handleEnter = (event) => {
     if (event.key.toLowerCase() === "enter") {
@@ -123,26 +120,10 @@ const NewOrder = () => {
           />
 
         </div>
-
-
-        <div className="col-2 mb-3">
-          <label >Og'irligi</label>
-          <input
-            type="number"
-            className="form-control w-100 p-2"
-            placeholder="Og'irligi"
-            value={weight}
-            onChange={(e) => setWeight(e.target.value)}
-            onKeyDown={handleEnter}
-          />
-        </div>
         <div className='col-3 mb-3'>
           <label>Ombor</label>
-          <select className="form-select w-100 p-2"  onKeyDown={handleEnter} onChange={(e) => setWarehouse(e.target.value)}>
-            <option value="">Warehouse</option>
-            {warehouses.map((item, index) => (
-              <option key={index} value={item.id}>{item.name}</option>
-            ))}
+          <select disabled className="form-select w-100 p-2"  onKeyDown={handleEnter} onChange={(e) => setWarehouse(e.target.value)}>
+            <option value={warehouses[0]?.id}>{warehouses[0]?.name}</option>
           </select>
         </div>
         <div className="col-1 mb-3">

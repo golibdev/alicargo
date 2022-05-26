@@ -110,11 +110,10 @@ const SendOrder = () => {
     } catch(err) {
       if(err.response.data.client) {
         toast.error(err.response.data.client[0])
-      }else if(err.response.status === 404) {
-        toast.error('Ma\'lumot mos kelmayapti!')
+        return
       }
 
-      console.log(err.response);
+      toast.error('Ma\'lumot mos kelmayapti!')
     }
   }
 
@@ -134,7 +133,7 @@ const SendOrder = () => {
       <form className="row">
         <div className="col-4" >
           <select className="form-select" value={flight} onChange={e => setFlight(e.target.value)}>
-            <option value=''>Resyni tanlang</option>
+            {/* <option value=''>Resyni tanlang</option> */}
             {airoport.map((item, index) => (
               <option key={index} value={item.id}>
                 {item.name}

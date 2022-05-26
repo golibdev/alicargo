@@ -6,7 +6,6 @@ import Panel from "./components/Main/Panel";
 import NewOrder from "./components/Main/NewOrder";
 import { Client } from './pages/Client/Client';
 import Warehouse from './pages/Warehouse/Warehouse';
-import NewIdOrder from "./pages/NewOrder/NewIdOrder"; 
 import Employe from './pages/employe/Empolye'
 import { Error } from './components/Error/Error';
 import WarehouseItem from './pages/Warehouse/WarehouseItem';
@@ -27,7 +26,6 @@ function App() {
           <Route index element={<Panel />} />
           <Route path='/home/cargos' element={<Cargos/>}/>
           <Route path="/home/new-order" element={<NewOrder />} />
-          <Route path="/home/new-id-order" element={<NewIdOrder />} />
           <Route path='/home/clients' element={<Client />} />
           <Route path='/home/warehouse' element={<Warehouse />} />
           <Route path='/home/warehouse/:id' element={<WarehouseItem />} />
