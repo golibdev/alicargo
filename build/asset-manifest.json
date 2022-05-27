@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.7d078012.css",
-    "main.js": "/static/js/main.8cc74af4.js",
+    "main.css": "/static/css/main.6671a4ca.css",
+    "main.js": "/static/js/main.7485a5d4.js",
     "static/media/commercial-cargo-services.png": "/static/media/commercial-cargo-services.365c0c110ad4ae1528e1.png",
     "static/media/back.jpg": "/static/media/back.43fd7c865cc57aff3251.jpg",
     "index.html": "/index.html",
-    "main.7d078012.css.map": "/static/css/main.7d078012.css.map",
-    "main.8cc74af4.js.map": "/static/js/main.8cc74af4.js.map"
+    "main.6671a4ca.css.map": "/static/css/main.6671a4ca.css.map",
+    "main.7485a5d4.js.map": "/static/js/main.7485a5d4.js.map"
   },
   "entrypoints": [
-    "static/css/main.7d078012.css",
-    "static/js/main.8cc74af4.js"
+    "static/css/main.6671a4ca.css",
+    "static/js/main.7485a5d4.js"
   ]
 }

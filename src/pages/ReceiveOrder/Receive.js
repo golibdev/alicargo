@@ -42,13 +42,6 @@ const Recive = () => {
     firstInput.current.focus();
   }
 
-  const getdataStatusTwo = async () => {
-    try {
-      const res = await newOrderApi.getStatusAll('2')
-      setDatas(res.data.reverse())
-    } catch (err) {}
-  }
-
   const getData = async () => {
     try {
       const res = await newOrderApi.getStatus('3')
@@ -62,33 +55,40 @@ const Recive = () => {
     try {
        const res = await wareHouseApi.getAll()
        setWarehouses(res.data.reverse())
+       setWarehouse(res.data[0].id)
     } catch (err) {}
   }
 
   useEffect(() => {
     getData()
-    getdataStatusTwo()
     getWareHouse()
   }, [])
 
-  const filterClient = datas.filter(item => item.barcode === barcode)
+  const getBarcodeData = async () => {
+    try {
+      const res = await newOrderApi.getStatusBarCode('2', barcode)
+      setClient(res.data.client.number)
+      setWeight(res.data.weight)
+    } catch (err) {
+      
+    }
+  }
 
   useEffect(() => {
-    if(filterClient.length > 0) {
-      setClient(filterClient[0].client.number)
-      setWeight(filterClient[0].weight)
+    if (barcode) {
+      getBarcodeData()
     } else {
       setClient('')
       setWeight('')
     }
-  }, [filterClient])
+  }, [barcode])
 
   const updatedHandler = async (e) => {
     e.preventDefault()
 
     const check = {
       barcode: barcode.trim().length === 0,
-      warehouse: warehouse.trim().length === 0
+      warehouse: warehouse.length === 0
     }
 
     if(check.barcode || check.warehouse) {
@@ -109,7 +109,6 @@ const Recive = () => {
       setWeight('')
       setWarehouse('')
       getData()
-      getdataStatusTwo()
       toast.success('Muvaffaqiyatli yangilandi!')
     } catch(err) {
       if(err.response.data.client) {
@@ -126,7 +125,8 @@ const Recive = () => {
       await newOrderApi.deleteOrder(barcode)
       toast.success('Muvaqqatli o\'chirildi!')
       getData()
-    } catch (err) {}
+    } catch (err) {
+    }
   }
 
   return (

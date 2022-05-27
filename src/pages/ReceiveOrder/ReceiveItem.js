@@ -23,9 +23,9 @@ const ReceiveItem = ({item, deleteOrderHandler}) => {
           </div>
           <div className='col-1'>
             <p style={{ opacity: '0' }} className="mb-0">Delete</p>
-            <div className="btn delet btn-danger col-8" onClick={(e) => {
+            <button className="btn delet btn-danger col-8" onClick={(e) => {
               deleteOrderHandler(e, item.barcode)
-            }}><i className="bi bi-trash"></i></div>
+            }}><i className="bi bi-trash"></i></button>
           </div>
       </div>
     </div>

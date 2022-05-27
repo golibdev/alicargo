@@ -99,6 +99,15 @@ const newOrderApi = {
                 'Authorization': `Token ${localStorage.getItem('token')}`
             }
         }
+    ),
+    getStatusBarCode: (status, barcode) => axios.get(
+        `https://api.alicargo.uz/api/cargos/${barcode}?status=${status}`,
+        {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Token ${localStorage.getItem('token')}`
+            }
+        }
     )
 }
 

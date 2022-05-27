@@ -11,7 +11,7 @@ const PaginationStatus = ({ setCargos, pageCount, setCurrentPage ,currentPage, s
     const getData = async (currentPage) => {
       try {
         const res = await newOrderApi.getPageStatusOrder(status, currentPage);
-        setCargos(res.data.results.reverse());
+        setCargos(res.data.results);
         setLoading(true)
       } catch (err) {
         console.log(err)

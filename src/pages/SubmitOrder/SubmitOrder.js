@@ -31,14 +31,6 @@ const SubmitOrder = () => {
       firstInput.current.focus();
     }
 
-   const getDataStatusThree = async () => {
-      try {
-         const res = await newOrderApi.getStatusAll('3')
-         setDatas(res.data.reverse())
-         setLoading(true)
-      } catch (err) {}
-   }
-
    const getData = async () => {
       try {
          const res = await newOrderApi.getStatus('4')
@@ -50,20 +42,26 @@ const SubmitOrder = () => {
 
    useEffect(() => {
       getData()
-      getDataStatusThree()
    }, [])
 
-   const filterClient = datas.filter(item => item.barcode === barcode)
-
-   useEffect(() => {
-      if(filterClient.length > 0) {
-         setClient(filterClient[0].client.number)
-         setWeight(filterClient[0].weight)
-      } else {
-         setClient('')
-         setWeight('')
+   const getBarcodeData = async () => {
+      try {
+        const res = await newOrderApi.getStatusBarCode('3', barcode)
+        setClient(res.data.client.number)
+        setWeight(res.data.weight)
+      } catch (err) {
+        
       }
-   }, [filterClient])
+    }
+  
+    useEffect(() => {
+      if (barcode) {
+        getBarcodeData()
+      } else {
+        setClient('')
+        setWeight('')
+      }
+    }, [barcode])
 
 
    const updatedHandler = async (e) => {

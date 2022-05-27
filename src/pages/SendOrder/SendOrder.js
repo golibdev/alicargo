@@ -9,7 +9,6 @@ import { flightApi } from '../../api/flightApi';
 
 const SendOrder = () => {
   const [data, setData] = useState([])
-  const [datas, setDatas] = useState([])
   const [airoport, setAiroport] = useState([])
   const [client, setClient] = useState('')
   const [barcode, setBarcode] = useState('')
@@ -39,17 +38,10 @@ const SendOrder = () => {
     firstInput.current.focus();
   }
 
-  const getDataStatusOne = async () => {
-    try {
-      const res = await newOrderApi.getStatusAll('1')
-      setDatas(res.data.reverse())
-    } catch (err) {}
-  }
-
   const getData = async () => {
     try {
       const res = await newOrderApi.getStatus('2')
-      setData(res.data.results.reverse())
+      setData(res.data.results)
       setPageCount(Math.ceil(res.data.count / 10))
       setLoading(true)
     } catch (err) {}
@@ -59,26 +51,31 @@ const SendOrder = () => {
     try {
       const res = await flightApi.getAll()
       setAiroport(res.data)
+      setFlight(res.data[0].id)
     } catch (err) {}
   } 
 
-  useEffect(() => {
-    getData()
-    getFlights()
-    getDataStatusOne()
-  }, [])
+  const getBarcodeData = async () => {
+    try {
+      const res = await newOrderApi.getStatusBarCode('1', barcode)
+      setClient(res.data.client.number)
+      setWeight(res.data.weight)
+    } catch (err) {
+      
+    }
+  }
 
-  const filterClient = datas.filter(item => item.barcode === barcode)
-
   useEffect(() => {
-    if(filterClient.length > 0) {
-      setClient(filterClient[0].client.number)
-      setWeight(filterClient[0].weight)
+    if (barcode) {
+      getBarcodeData()
     } else {
       setClient('')
       setWeight('')
     }
-  }, [filterClient])
+
+    getData()
+    getFlights()
+  }, [barcode])
 
   const adddNewOrderHandler = async (e) => {
     e.preventDefault()
@@ -87,6 +84,8 @@ const SendOrder = () => {
       barcode: barcode.trim().length === 0,
       flight: flight.length === 0
     }
+
+    console.log(barcode, flight)
 
     if(check.barcode || check.flight) {
       toast.error('Barcha maydonlar to\'ldirilishi shart!')
@@ -106,7 +105,6 @@ const SendOrder = () => {
       setWeight('')
       toast.success("Muvaffaqiyatli qo'shildi!")
       getData()
-      getDataStatusOne()
     } catch(err) {
       if(err.response.data.client) {
         toast.error(err.response.data.client[0])
@@ -133,7 +131,6 @@ const SendOrder = () => {
       <form className="row">
         <div className="col-4" >
           <select className="form-select" value={flight} onChange={e => setFlight(e.target.value)}>
-            {/* <option value=''>Resyni tanlang</option> */}
             {airoport.map((item, index) => (
               <option key={index} value={item.id}>
                 {item.name}
