@@ -55,7 +55,6 @@ const Recive = () => {
     try {
        const res = await wareHouseApi.getAll()
        setWarehouses(res.data.reverse())
-       setWarehouse(res.data[0].id)
     } catch (err) {}
   }
 
@@ -87,17 +86,16 @@ const Recive = () => {
     e.preventDefault()
 
     const check = {
-      barcode: barcode.trim().length === 0,
-      warehouse: warehouse.length === 0
+      barcode: barcode.trim().length === 0
     }
 
-    if(check.barcode || check.warehouse) {
+    if(check.barcode) {
       toast.error('Barcha maydonlar to\'ldirilishi shart!')
       return
     }
 
     const params = {
-      warehouse: Number(warehouse),
+      warehouse: warehouses[0].id,
       status: '3'
     }
 

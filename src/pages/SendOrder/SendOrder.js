@@ -85,8 +85,6 @@ const SendOrder = () => {
       flight: flight.length === 0
     }
 
-    console.log(barcode, flight)
-
     if(check.barcode || check.flight) {
       toast.error('Barcha maydonlar to\'ldirilishi shart!')
       return
@@ -130,7 +128,7 @@ const SendOrder = () => {
       <Navbar />
       <form className="row">
         <div className="col-4" >
-          <select className="form-select" value={flight} onChange={e => setFlight(e.target.value)}>
+          <select disabled className="form-select" value={flight} onChange={e => setFlight(e.target.value)}>
             {airoport.map((item, index) => (
               <option key={index} value={item.id}>
                 {item.name}

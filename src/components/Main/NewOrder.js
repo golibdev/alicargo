@@ -54,7 +54,6 @@ const NewOrder = () => {
     const check = {
       client: client.trim().length === 0,
       barcode: barcode.trim().length === 0,
-      weight: weight.length === 0,
       warehouse: warehouse.length === 0
     }
 
@@ -66,7 +65,7 @@ const NewOrder = () => {
     const params = {
       client: client,
       barcode,
-      weight: Number(weight),
+      weight: 1,
       warehouse: Number(warehouse)
     }
 
@@ -75,7 +74,6 @@ const NewOrder = () => {
       setClient('')
       setBarcode('')
       setWeight('')
-      // setWarehouse('')
       toast.success("Muvaffaqiyatli qo'shildi!")
       fetchData()
     } catch (err) {}
